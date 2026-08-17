@@ -90,10 +90,9 @@ async function login() {
 
         const { token, user } = response.data;
 
-        // Lưu thông tin đăng nhập
+        
         saveLogin(token, user);
 
-        // Chuyển đến trang tổng quan
         await router.replace("/dashboard");
 
     } catch (err) {

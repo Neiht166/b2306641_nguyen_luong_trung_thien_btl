@@ -14,13 +14,9 @@ import {
 export function resourceRoutes(Model, populate = []) {
   const router = Router();
 
-  // =========================
-  // CẤU HÌNH UPLOAD ẢNH
-  // =========================
 
   const uploadDir = path.join(process.cwd(), "uploads", "sach");
 
-  // Tự động tạo thư mục nếu chưa có
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, {
       recursive: true,
@@ -57,18 +53,15 @@ export function resourceRoutes(Model, populate = []) {
     },
   });
 
-  // =========================
-  // API
-  // =========================
 
   router.get("/", getAll(Model, populate));
 
   router.get("/:id", getOne(Model, populate));
 
-  // Nhận ảnh
+  
   router.post("/", upload.single("HinhAnhFile"), create(Model));
 
-  // Nhận ảnh khi chỉnh sửa
+ 
   router.put("/:id", upload.single("HinhAnhFile"), update(Model));
 
   router.delete("/:id", remove(Model));
