@@ -46,7 +46,6 @@ export const getOne =
 
 export const create = (Model) => async (req, res) => {
   try {
-    
     console.log("========== CREATE ==========");
     console.log("MODEL:", Model.modelName);
     console.log("BODY:", req.body);
@@ -60,7 +59,6 @@ export const create = (Model) => async (req, res) => {
       data.Password = await bcrypt.hash(data.Password, 10);
     }
 
-    
     if (req.file) {
       data.HinhAnh = `/uploads/sach/${req.file.filename}`;
 
@@ -91,7 +89,6 @@ export const create = (Model) => async (req, res) => {
 
 export const update = (Model) => async (req, res) => {
   try {
-    
     console.log("========== UPDATE ==========");
     console.log("MODEL:", Model.modelName);
     console.log("ID:", req.params.id);
@@ -106,7 +103,6 @@ export const update = (Model) => async (req, res) => {
       data.Password = await bcrypt.hash(data.Password, 10);
     }
 
-    
     if (req.file) {
       data.HinhAnh = `/uploads/sach/${req.file.filename}`;
 
